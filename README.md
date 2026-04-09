@@ -9,7 +9,11 @@ SAM2+yolo26 achieves semi-automatic annotation
   - 3.调用千问大模型对分割质量打分
   - 4.根据评分对标注数据进行分类，对需要的数据集人工微调
 
+  ## yolo26与sam2权重根据精度需求可调，本项目用的是yolo26和sam2.1_hiera_large
 
+    - yolo26权重放入 weights/pretrained
+    - sam权重放入 segment-anything-2/checkpoints
+    
 dependencies:
   - python=3.11.14
   - pytorch=2.5.1=py3.11_cuda12.4_cudnn9.1.0_0
