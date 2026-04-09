@@ -1,0 +1,86 @@
+# =========================
+# YOLOWorld + SAM2 标注配置
+# =========================
+
+# 项目根目录（可选，用于相对路径）
+base_dir: ./
+
+# YOLO-World 配置
+#yolo_weights: ${base_dir}weights/pretrained/best.pt
+yolo_weights: ${base_dir}weights/pretrained/yolo26x.pt
+yolo_onnx_path: ${base_dir}/weights/pretrained/yolo11s_seg.onnx
+# SAM2 配置
+sam2_checkpoint: ${base_dir}/segment-anything-2/checkpoints/sam2.1_hiera_large.pt
+sam2_yaml: ${base_dir}/segment-anything-2/sam2/configs/sam2.1/sam2.1_hiera_l.yaml
+
+# 数据路径
+input_dir: ${base_dir}/labelinput/camera_color_image_raw_compressed
+output_dir: ${base_dir}/labeloutput/camera_color_image_raw_compressed
+
+# 添加开关控制
+output_switches:
+  save_yolo: true         # 是否保存 YOLO .txt
+  save_labelme: true      # 是否保存 LabelMe .json
+  save_custom: true       # 是否保存含 Mask 的自定义 .json (用于转PNG)
+  save_studio: false       # 是否生成 Label Studio 导入文件
+  save_preview: true      # 是否保存可视化预览图
+  copy_images: false       # 是否将图片拷贝到输出目录
+
+# 类别
+classes:
+  - name: person
+    prompts: [person, human, man, woman, people,pedestrian]
+
+  - name: vehicle
+    prompts: [car,  vehicle,bus, coach, shuttle, public transit,truck, lorry, pickup ]
+
+  - name: bicycle
+    prompts: [ bicycle, bike, cycle]
+
+  - name: motorcycle
+    prompts: [ motorcycle]
+
+  - name: E-bike
+    prompts: [ electric vehicle, E-bike, green vehicle, battery-electric vehicle,automobile ]
+
+  - name: traffic lights
+    prompts: [ traffic lights, stoplight, signal ]
+
+  - name: Lane
+    prompts: [Lane，driveway，carriageway]
+
+  - name: sidewalk
+    prompts: [ pedestrian ,sidewalk，footway]
+
+  - name: crosswalk
+    prompts: [ zebra crossing, crosswalk, pelican crossing ]
+
+  - name: blind path
+    prompts: [ blind path, tactile paving, detecting tiles, braille path ]
+
+  - name: ramp
+    prompts: [ramp ]
+
+  - name: barrier
+    prompts: [barrier,curb-boundary,vase,fire hydrant，flower bed, planter, ornamentation ，potted plant]
+
+  - name: trash-bin
+    prompts: [ trash-bin ]
+
+  - name: road
+    prompts: [ road,floor ，path，route，way]
+
+  - name: stairs
+    prompts: [stairs]
+
+  - name: chair
+    prompts: [ chair ,table]
+
+  - name: table
+    prompts: [table ]
+
+  - name: door
+    prompts: [ door ]
+conf:
+  detect: 0.15
+  save: 0.30

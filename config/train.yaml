@@ -1,0 +1,82 @@
+# YOLO-World 自定义训练配置
+
+# 训练模型权重
+model: "weights/pretrained/yolov8s-worldv2.pt"
+# 输入参数
+imgsz: 640        # 输入分辨率
+batch: 16
+epochs: 300
+freeze : 10       #冻结训练
+# 优化器设置
+optimizer: "AdamW"
+lr0: 0.001
+lrf: 0.01
+weight_decay: 0.0005
+# 数据增强
+augment: True
+# 混合精度
+#mixed_precision: True
+# EarlyStopping 或耐心参数
+patience: 10
+# GPU or CPU
+device : "cpu"
+# 训练结果保存
+save: True
+
+## 数据集路径
+datasets:
+  data_yaml: "/home/why/tools/segmecnt_ws/yoloworld_my/datasets/data.yaml"
+#  path: "/home/liuxz/workspace/yoloworld_my/datasets"        # 包含 images/ 和 labels/ 的根目录
+#  train: "images/train"
+#  val: "images/val"
+#  labels:
+#    train: "labels/train"
+#    val: "labels/val"
+#
+# 主类别名（顺序 = class_id）
+names:
+  0: person
+  1: sidewalk
+  2: tactile
+  3: E-bike
+  4: bicycle
+  5: barrier
+  6: stairs
+  7: crosswalk
+  8: trash-bin
+  9: traffic-light
+  10: vehicle
+  11: curb-boundary
+  12: door
+  13: chair
+  14: floor
+  15: road
+  16: ramp
+  17: table
+#  2: car
+#  3: curb
+
+# YOLO-World 的文本描述（对应类别）
+classes:
+  0: person
+  1: sidewalk
+  2: tactile
+  3: E-bike
+  4: bicycle
+  5: barrier
+  6: stairs
+  7: crosswalk
+  8: trash-bin
+  9: traffic-light
+  10: vehicle
+  11: curb-boundary
+  12: door
+  13: chair
+  14: floor
+  15: road
+  16: ramp
+  17: table
+#  2: ["car", "vehicle", "automobile"]
+#  3: ["curb", "road edge", "sidewalk edge"]
+
+
