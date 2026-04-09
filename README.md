@@ -13,6 +13,7 @@ SAM2+yolo26 achieves semi-automatic annotation
 
     - yolo26权重放入 weights/pretrained
     - sam权重放入 segment-anything-2/checkpoints
+    label需要用户自行配置
     
 dependencies:
   - python=3.11.14
